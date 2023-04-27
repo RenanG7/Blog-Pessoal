@@ -1,6 +1,7 @@
 package com.generetion.blogpessoal.controller;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,17 +53,16 @@ public class PostagemController {
 				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(postagemRepository.save(postagem)))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
+
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
 		Optional<Postagem> postagem = postagemRepository.findById(id);
-		
+
 		if (postagem.isEmpty())
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		
-		postagemRepository.deleteById(id);
-	
-		
-	}
 
+		postagemRepository.deleteById(id);
+
+	}
 }

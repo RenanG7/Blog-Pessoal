@@ -15,8 +15,8 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-@Entity //-> Indica ao spring que o objeto é uma tabela
-@Table(name = "tb_postagens") //--> define um nome para a tabela ser criada 
+@Entity // -> Indica ao spring que o objeto é uma tabela
+@Table(name = "tb_postagens") // --> define um nome para a tabela ser criada
 public class Postagem {
 	// atributos da model de postagem/compos da tabela de postagem
 	@Id
@@ -33,10 +33,14 @@ public class Postagem {
 
 	@UpdateTimestamp
 	private LocalDateTime data;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
+
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
 
 	public Tema getTema() {
 		return tema;
@@ -76,6 +80,14 @@ public class Postagem {
 
 	public void setData(LocalDateTime data) {
 		this.data = data;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }
