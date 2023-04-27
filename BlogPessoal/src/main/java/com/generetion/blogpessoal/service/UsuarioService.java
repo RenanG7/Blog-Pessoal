@@ -14,6 +14,8 @@ import com.generetion.blogpessoal.model.UsuarioLogin;
 import com.generetion.blogpessoal.repository.UsuarioRepository;
 import com.generetion.blogpessoal.security.JwtService;
 
+import jakarta.validation.Valid;
+
 // regras de negócio especificas da aplicação
 @Service
 public class UsuarioService {
@@ -83,5 +85,10 @@ public class UsuarioService {
 
 	private String gerarToken(String usuario) {
 		return "Bearer " + jwtService.generateToken(usuario);
+	}
+
+	public Optional<Usuario> atualizarUsuario(@Valid Usuario usuario) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
