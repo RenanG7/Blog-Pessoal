@@ -2,6 +2,7 @@ package com.generetion.blogpessoal.model;
 
 import java.util.List;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -43,7 +44,19 @@ public class Usuario {
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
 
+	public Usuario(Long id, String nome, String usuario, String senha, String foto) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.foto = foto;
+	}
+
 	/* Insira os Getters and Setters */
+
+	public Usuario() {
+	}
 
 	public Long getId() {
 		return this.id;
